@@ -1,15 +1,17 @@
 <script setup lang="ts">
 import http from '@/services/http';
 import { toRefs, defineProps, unref, ref, reactive } from 'vue'
+import appInterface from "../entity/app"
 
 const props = defineProps<{
-  app: {},
+  app: appInterface,
 }>();
 
 let { app } = toRefs(props);
 
 const state = reactive({
   vAlertVisible:false,
+  loading:false,
 });
 
 
@@ -21,11 +23,14 @@ const deployStack = async () => {
     "id":app.value.id
   }
 
-   console.log(param);
+  console.log(param);
+  state.loading=true;
 
   http.post(`create`, param).then((response) => { 
-      console.log(response); // Succès !
+      state.loading=false;
+      console.log(response); // Succès !       
       state.vAlertVisible=true;
+     
     }, (error) => {
        state.vAlertVisible=true;
       console.log(error); // Erreur !
@@ -36,12 +41,54 @@ const deployStack = async () => {
 
 <template>
 
-  <v-alert v-model="state.vAlertVisible" type="success" dismissible> 
-    La requete a ete envoyee
-  </v-alert>
+  <v-dialog
+      v-model="state.loading"
+      hide-overlay
+      persistent  
+    >
+      <v-card
+        color="primary"
+        dark
+      >
+        <v-card-text>
+          Opération en cours
+          <v-progress-linear
+            indeterminate
+            color="white"
+            class="mb-0"
+          ></v-progress-linear>
+        </v-card-text>
+      </v-card>
+    </v-dialog>
+ 
+  <v-dialog
+      v-model="state.vAlertVisible"     
+    > 
+      <v-card>
+        <v-card-title class="text-h5 grey lighten-2">
+         Succès
+        </v-card-title>
 
-  <v-card 
-    class="mx-auto"
+        <v-card-text>
+          L'application a été installée
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            text
+            @click="state.vAlertVisible = false"
+          >
+            Quitter
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+  <v-card  
   >
     <v-img
       class="white--text align-end"
@@ -54,19 +101,26 @@ const deployStack = async () => {
 
     <v-card-text class="text--primary">
       <div>{{app.description}}</div>
+
+      <v-divider></v-divider>
+      <br/>
+
+      <v-row v-for="(env, i) in app.env"
+      :key="i">
+        <v-text-field
+          :label="env.name"
+          v-model="env.value"
+          outlined
+        ></v-text-field>
+      </v-row>
     </v-card-text>
 
-    <v-row v-for="(env, i) in app.env"
-    :key="i">
-      <v-text-field
-        :label="env.name"
-        v-model="env.value"
-        outlined
-      ></v-text-field>
-    </v-row>
+  
 
     <v-card-actions>  
+      <v-spacer></v-spacer>
       <v-btn
+        right
         color="orange"
         text
         @click="deployStack"

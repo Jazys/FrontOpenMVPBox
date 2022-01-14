@@ -50,26 +50,22 @@ http.get(`myIp`).then((response) => {
 
 <template>
   <div class="form-style-5">
+	<fieldset>
+      <legend><span class="number">1</span> Mes informations :</legend>
+	  <label>Addresse Ip Public :</label>
+      <input type="text" name="field1" placeholder="" v-model="state.publicIP">
+	  <label>Addresse Ip Locale :</label>
+      <input type="text" name="field2" placeholder="Addresse Ip Locale :" v-model="state.localIP">     
+    </fieldset>   
     <fieldset>
-      <legend><span class="number">1</span> Votre compte :</legend>
-      <input type="text" name="field1" placeholder="Pseudo" v-model="username">
-      <input type="text" name="field2" placeholder="Votre clé" v-model="apiKey">     
-      </fieldset>    
-      <v-btn depressed color="primary" @click="saveConf(username, apiKey)">
-       Enregistrer
-      </v-btn>
+      <legend><span class="number">2</span> Mon compte :</legend>
+      <input type="text" name="field3" placeholder="Pseudo" v-model="username">
+      <input type="text" name="field4" placeholder="Votre clé" v-model="apiKey">     
+    </fieldset>    
+	<v-btn depressed color="primary" @click="saveConf(username, apiKey)">
+	Enregistrer
+	</v-btn>
   </div>
-
-  <v-text-field
-    label="Addresse Ip Public :"
-    v-model="state.publicIP"
-    outlined
-  ></v-text-field>
-  <v-text-field
-    label="Addresse Ip Locale :"
-    v-model="state.localIP"
-    outlined
-  ></v-text-field> 
 
 </template>
 

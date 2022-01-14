@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import { reactive } from "vue";
+import Apps from "../components/Apps.vue"
 import http from '@/services/http';
+import appInterface from "../entity/app";
+
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ inheritLocale:true });
 
 const state = reactive({
   myApps:{},
@@ -15,23 +21,12 @@ http.get(`installedStack`).then((response) => {
     console.log(error); 
 });
 
-const deleteStack = async (dir:string) => { 
+const update = async (dir:string) => { 
  
-  http.delete(`delete/`+dir).then((response) => { 
-      console.log(response);   
-      state.vAlertVisible=true;
-    }, (error) => {      
-      console.log(error); 
-      state.vAlertVisible=true;
-  });
 };
 
 </script>
-<template>  
-
-  <v-alert v-show="state.vAlertVisible" type="success" dismissible> 
-    La requete a ete envoyee
-  </v-alert>
+<template>   
 
    <v-row align="center"
       justify="center">
@@ -39,29 +34,6 @@ const deleteStack = async (dir:string) => {
   </v-row>
 
   <v-row>
- <v-col
-    v-for="(app, i) in state.myApps"
-    :key="i"
-    cols="3"
-    >
-    <v-card 
-      class="mx-auto"
-    >       
-
-      <v-card-text class="text--primary">
-        <div>{{app}}</div>
-      </v-card-text>
-
-      <v-card-actions>  
-        <v-btn
-          color="orange"
-          text
-          @click="deleteStack(app)"
-        >
-          Supprimer
-        </v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-col>
+    <Apps :apps="state.myApps" :view="true" :update="true" :config="false" :info="false" :delete="true"></Apps>
   </v-row>
 </template>

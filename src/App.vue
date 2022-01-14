@@ -1,16 +1,10 @@
-<script  lang="ts">
+<script setup  lang="ts">
 import NavDrawer from './components/NavigationDrawer.vue'
+import { useI18n } from "vue-i18n";
 
-export default {
-  name: 'App',
+const { locale, t } = useI18n({ inheritLocale:true });
 
-  components: {
-    NavDrawer,   
-  },
-
-  setup: () => ({    
-  }),
-}
+const allLocales=["ef","er"];
 </script>
 
 <template>
@@ -19,6 +13,11 @@ export default {
     <NavDrawer app/>
 
     <v-app-bar app>
+      <v-spacer></v-spacer>
+      <select v-model="locale">
+        <option value="en">en</option>
+        <option value="fr">fr</option>
+      </select>        
     </v-app-bar>
 
     <v-main>

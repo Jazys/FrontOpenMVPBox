@@ -9,7 +9,7 @@ if(typeof localStorage !== 'undefined' )
 }
 
 const http = axios.create({
-    baseURL: "",
+    baseURL: import.meta.env.VITE_URL_SRV,
     headers: { 'Accept': "application/json",'Content-Type': 'application/json', 'api-key':apiKey},   
   })
 
