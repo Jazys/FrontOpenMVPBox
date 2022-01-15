@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  front:
+    build: ./
+    environment:
+      - VITE_URL_SRV=${VITE_URL_SRV}
+    ports:
+      - 8099:8099
