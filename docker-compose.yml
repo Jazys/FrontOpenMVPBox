@@ -5,5 +5,22 @@ services:
     build: ./
     environment:
       - VITE_URL_SRV=${VITE_URL_SRV}
-    ports:
-      - 8099:8099
+    networks:
+      - traefik-proxy
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.frontendovmpb.rule=Host(`${URL_FRONT}`)
+      - traefik.http.routers.frontendovmpb.entrypoints=websecure
+      - traefik.http.routers.frontendovmpb.tls=true
+      - traefik.http.routers.frontendovmpb.tls.certresolver=lets-encrypt
+      - traefik.http.routers.frontendovmpb.service=frontendovmpb
+      - traefik.http.routers.frontendovmpb.middlewares=simpleAuth@file
+      - traefik.http.services.frontendovmpb.loadbalancer.server.port=8099
+      - traefik.docker.network=${NETWORK_TRAEFIK}
+#    ports:
+#      - 8099:8099
+
+networks:
+  traefik-proxy:
+    external:
+      name: ${NETWORK_TRAEFIK}
