@@ -30,10 +30,11 @@ const update = async (dir:string) => {
 
    <v-row align="center"
       justify="center">
-      <h1>Liste des applications installées </h1>
+      <h1>{{ t('MyAppInstalled.title') }} </h1>
   </v-row>
+  <br/>
 
   <v-row>
-    <Apps :apps="state.myApps" :view="true" :update="true" :config="false" :info="false" :delete="true"></Apps>
+    <Apps :apps="state.myApps" :view="true" :update="true" :config="false" :info="false" :delete="true" download="true"></Apps>
   </v-row>
 </template>

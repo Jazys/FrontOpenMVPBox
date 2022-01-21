@@ -2,9 +2,8 @@
 import NavDrawer from './components/NavigationDrawer.vue'
 import { useI18n } from "vue-i18n";
 
-const { locale, t } = useI18n({ inheritLocale:true });
+const { t, locale } = useI18n({ useScope: 'global' })
 
-const allLocales=["ef","er"];
 </script>
 
 <template>
@@ -12,7 +11,7 @@ const allLocales=["ef","er"];
 
     <NavDrawer app/>
 
-    <v-app-bar app>
+    <v-app-bar app color="#C5CAE9">   
       <v-spacer></v-spacer>
       <select v-model="locale">
         <option value="en">en</option>
@@ -20,7 +19,8 @@ const allLocales=["ef","er"];
       </select>        
     </v-app-bar>
 
-    <v-main>
+    <v-main app style="
+      background: #E8EAF6; overflow-y: scroll ; max-height:950px">
       <v-container fluid>
         <router-view>         
         </router-view>

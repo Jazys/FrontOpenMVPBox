@@ -1,4 +1,61 @@
 {
+  "AppDeploy":
+  {
+    "operation":"Operation in progress",
+    "deploy":"Deploy",
+    "success":"Success",
+    "appinstalled":"App is installed",
+    "addfunc":"Your request has to be sent to admin. I will ask you if you have configured your mail"
+  },
+  "AppInfo":
+  {
+    "operation":"Operation in progress"
+  },
+  "Apps":
+  {
+    "operation":"Operation in progress",
+    "success":"Success",
+    "uninstall":"App was removed",
+    "notavailable":"Not available",
+    "message":"Function is not available. Upvote is sent to server to unlock it",
+    "configuration":"Config",
+    "asktoadd":"Ast to Add"
+  },
+  "AppView":
+  {
+    "request":"Request is sent"
+  },
+  "NavigationDrawer":
+  {
+    "myapp":"My App",
+    "apps":"App Store ",
+    "conf":"Configuration",
+    "support":"Support"     
+  },
+  "AppAvailable":
+  {
+    "title":"Available stacks"
+  },
+  "ConfigView":
+  {
+    "info":"My Information",
+    "ippublic":"Public IP ",
+    "iplocale":"Local IP",
+    "myaccount":"My Account", 
+    "pseudo":"Pseudo",
+    "mail":"mail",
+    "apikey":"apikey received from mail",
+    "save":"Save"         
+  },
+  "MyAppInstalled":
+  {
+    "title":"All installed stacks"
+  },
+  "SupportView":
+  {
+    "title":"Weclome to support page",
+    "body":"For support demand, you need to use pay something ..."
+  },
     "hello": "ee World",
     "it": "Italian",
     "en": "English",

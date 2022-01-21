@@ -4,9 +4,17 @@ import vuetify from './plugins/vuetify'
 import router from './router/index';
 import messages from "@intlify/vite-plugin-vue-i18n/messages";
 import { createI18n } from "vue-i18n";
+import en from './locales/en.json'
+import fr from './locales/fr.json'
+
 const i18n = createI18n({
-  locale: "en",
-  messages,
+  legacy: false,
+  globalInjection: true,
+  locale: "fr",
+  messages: {
+    en,
+    fr
+  }
 });
 
 

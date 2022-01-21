@@ -2,7 +2,9 @@
 import http from '@/services/http';
 import { toRefs, defineProps, unref, ref, reactive } from 'vue'
 import appInterface from "../entity/app"
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n({ inheritLocale:true });
 const props = defineProps<{
   app: appInterface,
 }>();
@@ -12,6 +14,8 @@ let { app } = toRefs(props);
 const state = reactive({
   vAlertVisible:false,
   loading:false,
+  titleSucces:'',
+  textSucess:''
 });
 
 
@@ -28,12 +32,35 @@ const deployStack = async () => {
 
   http.post(`create`, param).then((response) => { 
       state.loading=false;
+      state.titleSucces=t('AppDeploy.success');
+      state.textSucess=t('AppDeploy.appinstalled');
       console.log(response); // Succès !       
       state.vAlertVisible=true;
      
     }, (error) => {
        state.vAlertVisible=true;
       console.log(error); // Erreur !
+  });
+};
+
+const addfunc = async (func_name:string) => { 
+
+  let usermail:string|null="";
+
+  //state.loading=true;
+  if(localStorage.getItem('usermail') != null)
+      usermail=localStorage.getItem('usermail');
+ 
+  http.get(`addfunc/`+func_name+"_"+usermail).then((response) => { 
+      console.log(response);   
+      state.titleSucces=t('AppDeploy.success');
+      state.textSucess=t('AppDeploy.addfunc');
+      //state.loading=false;
+       state.vAlertVisible=true;    
+    }, (error) => {      
+      console.log(error); 
+      state.loading=false;
+       state.vAlertVisible=true;  
   });
 };
 
@@ -51,7 +78,7 @@ const deployStack = async () => {
         dark
       >
         <v-card-text>
-          Opération en cours
+           {{ t('AppDeploy.operation') }}
           <v-progress-linear
             indeterminate
             color="white"
@@ -66,11 +93,11 @@ const deployStack = async () => {
     > 
       <v-card>
         <v-card-title class="text-h5 grey lighten-2">
-         Succès
+         {{state.titleSucces}}
         </v-card-title>
 
         <v-card-text>
-          L'application a été installée
+          {{state.textSucess}}
         </v-card-text>
 
         <v-divider></v-divider>
@@ -79,10 +106,11 @@ const deployStack = async () => {
           <v-spacer></v-spacer>
           <v-btn
             color="primary"
+            rounded
             text
             @click="state.vAlertVisible = false"
           >
-            Quitter
+            Close
           </v-btn>
         </v-card-actions>
       </v-card>
@@ -118,14 +146,24 @@ const deployStack = async () => {
   
 
     <v-card-actions>  
+      <v-btn
+        right
+        rounded
+        color="green"
+        text
+        @click="addfunc('ConfAvancee_'+app.title)"
+      >
+        Config Premium
+      </v-btn>
       <v-spacer></v-spacer>
       <v-btn
         right
+        rounded
         color="orange"
         text
         @click="deployStack"
       >
-        Deployer
+      {{ t('AppDeploy.deploy') }}
       </v-btn>
     </v-card-actions>
   </v-card>

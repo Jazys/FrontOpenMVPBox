@@ -2,7 +2,9 @@
 import http from '@/services/http';
 import { toRefs, defineProps, unref, ref, reactive } from 'vue'
 import appInterface from "../entity/app"
+import { useI18n } from "vue-i18n";
 
+const { t } = useI18n({ inheritLocale:true });
 const props = defineProps<{
   app: appInterface
 }>();
@@ -22,7 +24,7 @@ const emit = defineEmits({
 <template>
 
   <v-alert v-model="state.vAlertVisible" type="success" dismissible> 
-    La requete a ete envoyee
+    {{ t('Appinfo.operation') }}
   </v-alert>
 
   <v-card     
@@ -65,11 +67,12 @@ const emit = defineEmits({
       <v-spacer></v-spacer>
       <v-btn
         right
+        rounded
         color="orange"
         text
         @click="emit('quitDialog')"
       >
-        Quiiter
+        Close
       </v-btn>
     </v-card-actions>
   </v-card>

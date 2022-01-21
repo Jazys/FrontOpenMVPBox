@@ -1,10 +1,60 @@
 {
-    "hello": "Hello World",
-    "it": "Italian",
-    "en": "English",
-    "language":"Français",
-    "updateStack":"Mettre à jour ",
-    "deleteStack":"Supprimer",
-    "view":"Voir"
+  "AppDeploy":
+  {
+    "operation":"Opération en cours",
+    "deploy":"Deployer",
+    "success":"Succès",
+    "appinstalled":"L'application a été installée",
+    "addfunc":"Une demande a été envoyé, vous serez recontacter prochainement. Pense à configurer ton mail pour que je puisse te contacter"
+  },
+  "AppInfo":
+  {
+    "operation":"Opération en cours"
+  },
+  "Apps":
+  {
+    "operation":"Opération en cours",
+    "success":"Succès",
+    "uninstall": "L'application a été désinstallée",
+    "notavailable":"Non disponible",
+    "message":"La fonction n'est pas encore disponible. Un vote sur cette fonctionnalité a été envoyé sur le serveur",
+    "configuration":"Configurer",
+    "asktoadd":"Demande d'Ajout"
+  },
+  "AppView":
+  {
+    "request":"la requête a été reçue"
+  },
+  "NavigationDrawer":
+  {
+    "myapp":"Mes App",
+    "apps":"App Store ",
+    "conf":"Configuration",
+    "support":"Support"     
+  },
+  "AppAvailable":
+  {
+    "title":"La liste des applications disponibles"
+  },
+  "ConfigView":
+  {
+    "info":"Mes informations",
+    "ippublic":"Addresse Ip Public ",
+    "iplocale":"Addresse Ip Locale",
+    "myaccount":"Mon compte",
+    "pseudo":"Pseudo",
+    "mail":"Adresse mail",
+    "apikey":"Clé Api reçue par mail",
+    "save":"Enregistrer"      
+  },
+  "MyAppInstalled":
+  {
+    "title":"La liste des applications installées"
+  },
+  "SupportView":
+  {
+    "title":"Bienvenu dans la page de déploiement des stacks",
+    "body":"Pour toutes demamde de support, de fonctionnalité, de demandes d'aides. Il est possible de souscrire au support via la messagerie"
+  }  
   }
   

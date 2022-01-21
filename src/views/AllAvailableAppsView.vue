@@ -2,6 +2,9 @@
 import { reactive } from "vue";
 import Apps from "../components/Apps.vue"
 import http from '@/services/http';
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ inheritLocale:true });
 
 console.log(import.meta.env.VITE_URL_SRV);
 
@@ -20,8 +23,9 @@ http.get(`allStack`).then((response) => {
 <template>  
    <v-row align="center"
       justify="center">
-      <h1>Liste des applications disponibles </h1>
+      <h1>{{ t('AppAvailable.title') }}  </h1>
   </v-row>
+  <br/>
 
-  <Apps :apps="state.allApps" :view="false" :update="false" :config="true" :info="true" :delete="false"></Apps>
+  <Apps  :apps="state.allApps" :view="false" :update="false" :config="true" :info="true" :delete="false" :download="false" :askToAdd="true" ></Apps>
 </template>

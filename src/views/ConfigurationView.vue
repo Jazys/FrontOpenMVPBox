@@ -1,6 +1,9 @@
 <script setup lang="ts">
 import { ref, reactive } from 'vue'
 import http from '@/services/http';
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ inheritLocale:true });
 
 const state = reactive({
   localIP:"",
@@ -9,6 +12,7 @@ const state = reactive({
 
 let username:string|null="";
 let apiKey:string|null="";
+let usermail:string|null="";
 
 if(typeof localStorage !== 'undefined' )
 {
@@ -17,15 +21,21 @@ if(typeof localStorage !== 'undefined' )
     
     if(localStorage.getItem('apiKey') != null)
       apiKey=localStorage.getItem('apiKey');
+	
+	if(localStorage.getItem('usermail') != null)
+      usermail=localStorage.getItem('usermail');
 }
 
-function saveConf(user:string|null, key:string|null) { 
+function saveConf(user:string|null, key:string|null, mail:string|null) { 
    if (typeof localStorage !== 'undefined') {      
       if(user!=null )
         localStorage.setItem('username', user)
       
       if(key!=null )
         localStorage.setItem('apiKey', key)
+
+	  if(mail!=null )
+        localStorage.setItem('usermail', mail)
     }
 }
 
@@ -51,19 +61,23 @@ http.get(`myIp`).then((response) => {
 <template>
   <div class="form-style-5">
 	<fieldset>
-      <legend><span class="number">1</span> Mes informations :</legend>
-	  <label>Addresse Ip Public :</label>
+      <legend><span class="number">1</span> {{ t('ConfigView.info') }}</legend>
+	  <label>{{ t('ConfigView.ippublic') }} :</label>
       <input type="text" name="field1" placeholder="" v-model="state.publicIP">
-	  <label>Addresse Ip Locale :</label>
+	  <label>{{ t('ConfigView.iplocale') }} :</label>
       <input type="text" name="field2" placeholder="Addresse Ip Locale :" v-model="state.localIP">     
     </fieldset>   
     <fieldset>
-      <legend><span class="number">2</span> Mon compte :</legend>
+      <legend><span class="number">2</span> {{ t('ConfigView.myaccount') }} :</legend>
+	  <label>{{ t('ConfigView.pseudo') }} :</label>
       <input type="text" name="field3" placeholder="Pseudo" v-model="username">
-      <input type="text" name="field4" placeholder="Votre clé" v-model="apiKey">     
+	  <label>{{ t('ConfigView.mail') }} :</label>
+	  <input type="text" name="field4" placeholder="mail" v-model="usermail">
+	  <label>{{ t('ConfigView.apikey') }} :</label>
+      <input type="text" name="field5" placeholder="Votre clé" v-model="apiKey">     
     </fieldset>    
-	<v-btn depressed color="primary" @click="saveConf(username, apiKey)">
-	Enregistrer
+	<v-btn depressed color="primary" @click="saveConf(username, apiKey, usermail)">
+	{{ t('ConfigView.save') }}
 	</v-btn>
   </div>
 
