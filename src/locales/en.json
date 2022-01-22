@@ -20,7 +20,8 @@
     "notavailable":"Not available",
     "message":"Function is not available. Upvote is sent to server to unlock it",
     "configuration":"Config",
-    "asktoadd":"Ast to Add"
+    "asktoadd":"Ast to Add",
+    "titleConfirmDel": "Do you confirm to delete this stack ?"
   },
   "AppView":
   {

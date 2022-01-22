@@ -20,7 +20,8 @@
     "notavailable":"Non disponible",
     "message":"La fonction n'est pas encore disponible. Un vote sur cette fonctionnalité a été envoyé sur le serveur",
     "configuration":"Configurer",
-    "asktoadd":"Demande d'Ajout"
+    "asktoadd":"Demande d'Ajout",
+    "titleConfirmDel": "Voulez-vous vraiment supprimer la stack ?"
   },
   "AppView":
   {

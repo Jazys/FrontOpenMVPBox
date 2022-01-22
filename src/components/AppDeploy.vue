@@ -33,8 +33,9 @@ const deployStack = async () => {
   http.post(`create`, param).then((response) => { 
       state.loading=false;
       state.titleSucces=t('AppDeploy.success');
-      state.textSucess=t('AppDeploy.appinstalled');
-      console.log(response); // Succès !       
+      state.textSucess=t('AppDeploy.appinstalled')+"\n ..  Infos : \n";
+      state.textSucess+=response.data.info;
+      console.log(response.data.info); // Succès !       
       state.vAlertVisible=true;
      
     }, (error) => {
@@ -156,6 +157,15 @@ const addfunc = async (func_name:string) => {
         Config Premium
       </v-btn>
       <v-spacer></v-spacer>
+      <v-btn
+        right
+        rounded
+        color="yellow"
+        text
+        @click="addfunc('localDeploy_'+app.title)"
+      >
+      {{ t('AppDeploy.localDeploy') }}
+      </v-btn>
       <v-btn
         right
         rounded

@@ -26,6 +26,8 @@ const state = reactive({
   vDialogDel:false,
   vDialogSoonAvailable:false,
   loading:false,
+  confirmDel:false,
+  appToDel:'',
   idSelectedStack:-1,
 });
 
@@ -50,6 +52,7 @@ const deleteStack = async (dir:string) => {
       console.log(response);   
       state.loading=false;
       state.vDialogDel=true;    
+      state.appToDel='';
     }, (error) => {      
       console.log(error); 
       state.loading=false;
@@ -150,6 +153,39 @@ const addfunc = async (func_name:string) => {
       </v-card>
     </v-dialog>
 
+  <v-dialog
+        v-model="state.confirmDel"      
+  >
+    <v-card
+    >
+      <v-card-subtitle class="pb-0">
+        {{ t('Apps.titleConfirmDel') }}  
+      </v-card-subtitle>
+
+      <v-card-text class="text--primary">
+        <div></div>
+      </v-card-text>
+
+      <v-card-actions>
+        <v-btn
+          color="grey"
+          text
+          @click="state.confirmDel=false"
+        >
+          No
+        </v-btn>
+
+        <v-btn
+          color="red"
+          text
+          @click="state.confirmDel=false; deleteStack(state.appToDel)"
+        >
+          Yes
+        </v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+  
   <v-dialog
         v-model="state.deployAppActive"      
   >
@@ -255,7 +291,7 @@ const addfunc = async (func_name:string) => {
           color="red"
           rounded
           text
-          @click="deleteStack(app.userId+'_'+app.title)"  
+          @click="state.confirmDel=true; state.appToDel=app.userId+'_'+app.title"  
           v-show="delete"
         >
           Delete
