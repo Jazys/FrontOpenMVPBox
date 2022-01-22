@@ -4,12 +4,16 @@ import { useI18n } from "vue-i18n";
 
 const { t } = useI18n({ inheritLocale:true });
 
+console.log(window.location.host);
+
 
 const links = [
   { title: t('NavigationDrawer.myapp'), icon: 'mdi-home', route:"/myApp" },
   { title: t('NavigationDrawer.apps'), icon: 'mdi-view-dashboard', route:"/storeApp" },
   { title: t('NavigationDrawer.conf'), icon: 'mdi-wrench', route:"/conf" },
-  { title: t('NavigationDrawer.support'), icon: 'mdi-email', route:"/support" }
+  { title: t('NavigationDrawer.support'), icon: 'mdi-email', route:"/support" },
+  { title: "Portainer", icon: 'mdi-dialpad ', route:"/traefik" },
+  { title: "Treafik", icon: 'mdi-dialpad', route:"/portainer" }
 ]
 </script>
 
@@ -50,6 +54,7 @@ const links = [
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+        
       </v-list>
     </v-navigation-drawer>
   </v-card>

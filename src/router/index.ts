@@ -28,6 +28,20 @@ const routes: Array<RouteRecordRaw> = [
     name: 'supprt',
     component: () => import('../views/SupportView.vue')
   },
+  {
+    path: "/portainer",
+    component: home,
+    beforeEnter(to, from, next) {
+      window.location.href = "https://portainer."+window.location.host.substring(window.location.host.indexOf(".")+1,window.location.host.length);
+    }
+  },
+  {
+    path: "/traefik",
+    component: home,
+    beforeEnter(to, from, next) {
+      window.location.href = "https://traf."+window.location.host.substring(window.location.host.indexOf(".")+1,window.location.host.length);
+    }
+  }
 
 ]
 

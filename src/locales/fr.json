@@ -5,7 +5,8 @@
     "deploy":"Deployer",
     "success":"Succès",
     "appinstalled":"L'application a été installée",
-    "addfunc":"Une demande a été envoyé, vous serez recontacter prochainement. Pense à configurer ton mail pour que je puisse te contacter"
+    "addfunc":"Une demande a été envoyé, vous serez recontacter prochainement. Pense à configurer ton mail pour que je puisse te contacter",
+    "localDeploy":"Déployer sur réseau local"
   },
   "AppInfo":
   {

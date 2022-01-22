@@ -5,7 +5,8 @@
     "deploy":"Deploy",
     "success":"Success",
     "appinstalled":"App is installed",
-    "addfunc":"Your request has to be sent to admin. I will ask you if you have configured your mail"
+    "addfunc":"Your request has to be sent to admin. I will ask you if you have configured your mail",
+    "localDeploy":"Deploy on local network"
   },
   "AppInfo":
   {
