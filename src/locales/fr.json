@@ -55,6 +55,11 @@
   {
     "title":"Bienvenu dans la page de déploiement des stacks",
     "body":"Pour toutes demamde de support, de fonctionnalité, de demandes d'aides. Il est possible de souscrire au support via la messagerie"
-  }  
+  },  
+  "HomeView":
+  {
+    "title":"Bienvenue dans la page de déploiement des stacks",
+    "body":"Vous devez d'abord configurer votre clé d'API que vous avez reçue par mail avant de pouvoir installer des stacks. Il faudra recharger votre page après la sauvegarde de vos paramètres"
+  }
   }
   

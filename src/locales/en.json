@@ -56,12 +56,11 @@
     "title":"Weclome to support page",
     "body":"For support demand, you need to use pay something ..."
   },
-    "hello": "ee World",
-    "it": "Italian",
-    "en": "English",
-    "language":"English",
-    "updateStack":"Update",
-    "deleteStack":"Delete",
-    "view":"View"
+  "HomeView":
+  {
+    "title":"Weclome to support page",
+    "body":"You need to configure your apikey that you have received by mail before to install stacks/tools. Need to refresh your page after saving"
   }
+}
+
   

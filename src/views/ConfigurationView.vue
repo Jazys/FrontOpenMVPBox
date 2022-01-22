@@ -36,6 +36,8 @@ function saveConf(user:string|null, key:string|null, mail:string|null) {
 
 	  if(mail!=null )
         localStorage.setItem('usermail', mail)
+
+		alert("Please reload your page (F5)");
     }
 }
 
