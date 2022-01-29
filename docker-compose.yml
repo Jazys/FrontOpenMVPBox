@@ -5,6 +5,7 @@ services:
     build: ./
     environment:
       - VITE_URL_SRV=${VITE_URL_SRV}
+    restart: unless-stopped
     networks:
       - traefik-proxy
     labels:
