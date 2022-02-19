@@ -4,12 +4,8 @@
   "scripts": {
     "serve": "vite preview",
     "build": "vite build",
-    "test:unit": "cypress open-ct",
-    "test:e2e": "start-server-and-test preview http://127.0.0.1:5050/ 'cypress open'",
     "dev": "vite",
     "preview": "vite preview --port 5050",
-    "test:e2e:ci": "start-server-and-test preview http://127.0.0.1:5050/ 'cypress run'",
-    "test:unit:ci": "cypress run-ct --quiet --reporter spec",
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
@@ -24,15 +20,12 @@
     "vuedraggable": "^4.1.0",
     "vuetify": "^3.0.0-alpha.0"
   },
-  "devDependencies": {
-    "@cypress/vite-dev-server": "^2.2.2",
-    "@cypress/vue": "^3.1.0",
+  "devDependencies": { 
     "@types/node": "^16.11.17",
     "@vitejs/plugin-vue": "^2.0.1",
     "@vue/cli-plugin-babel": "5.0.0-beta.7",
     "@vue/cli-service": "5.0.0-beta.7",
     "@vuetify/vite-plugin": "^1.0.0-alpha.3",
-    "cypress": "^9.2.0",
     "sass": "^1.47.0",
     "sass-loader": "^10.0.0",
     "start-server-and-test": "^1.14.0",
