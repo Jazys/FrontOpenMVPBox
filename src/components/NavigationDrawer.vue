@@ -12,8 +12,8 @@ const links = [
   { title: t('NavigationDrawer.apps'), icon: 'mdi-view-dashboard', route:"/storeApp" },
   { title: t('NavigationDrawer.conf'), icon: 'mdi-wrench', route:"/conf" },
   { title: t('NavigationDrawer.support'), icon: 'mdi-email', route:"/support" },
-  { title: "Portainer", icon: 'mdi-dialpad ', route:"/traefik" },
-  { title: "Treafik", icon: 'mdi-dialpad', route:"/portainer" }
+  { title: "Portainer", icon: 'mdi-dialpad ', route:"/portainer" },
+  { title: "Treafik", icon: 'mdi-dialpad', route:"/traefik" }
 ]
 </script>
 
